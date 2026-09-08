@@ -248,6 +248,106 @@ def recommend_products(
     # Return top 5
     return recommendation_df.head(5)
 
+# =========================================================
+# FASHION PLACEHOLDER FUNCTION
+# =========================================================
+
+def get_fashion_placeholder(
+    category,
+    article_type,
+    product_id
+):
+
+    category = str(category).lower()
+    article_type = str(article_type).lower()
+
+    # ---------------------------------------------
+    # Decide emoji based on product
+    # ---------------------------------------------
+
+    if "shoe" in article_type or "footwear" in category:
+
+        emoji = "👟"
+        title = "FASHION SHOES"
+
+    elif "bag" in article_type or "bag" in category:
+
+        emoji = "👜"
+        title = "FASHION BAG"
+
+    elif (
+        "dress" in article_type
+        or "dress" in category
+    ):
+
+        emoji = "👗"
+        title = "FASHION DRESS"
+
+    elif (
+        "shirt" in article_type
+        or "top" in article_type
+        or "tshirt" in article_type
+        or "t-shirt" in article_type
+    ):
+
+        emoji = "👕"
+        title = "FASHION TOP"
+
+    elif (
+        "watch" in article_type
+        or "accessories" in category
+    ):
+
+        emoji = "⌚"
+        title = "ACCESSORY"
+
+    elif (
+        "jacket" in article_type
+        or "coat" in article_type
+        or "blazer" in article_type
+    ):
+
+        emoji = "🧥"
+        title = "FASHION WEAR"
+
+    elif (
+        "jean" in article_type
+        or "trouser" in article_type
+        or "pant" in article_type
+    ):
+
+        emoji = "👖"
+        title = "FASHION BOTTOM"
+
+    else:
+
+        emoji = "👗"
+        title = "FASHION PRODUCT"
+
+    # ---------------------------------------------
+    # Create placeholder text
+    # ---------------------------------------------
+
+    text = (
+        f"{emoji}  {title}\\n"
+        f"Product #{product_id}"
+    )
+
+    # Encode text for URL
+    encoded_text = quote(text)
+
+    # ---------------------------------------------
+    # Placeholder image URL
+    # ---------------------------------------------
+
+    image_url = (
+        f"https://placehold.co/500x600"
+        f"/f5f3ff/4f46e5"
+        f"?text={encoded_text}"
+    )
+
+    return image_url
+
 
 # =========================================================
 # GET RECOMMENDATIONS
@@ -380,106 +480,6 @@ if st.sidebar.button("🔍 Get Recommendations"):
                 f"⭐ Preference Score: **{score}/16**"
             )
 
-
-# =========================================================
-# FASHION PLACEHOLDER FUNCTION
-# =========================================================
-
-def get_fashion_placeholder(
-    category,
-    article_type,
-    product_id
-):
-
-    category = str(category).lower()
-    article_type = str(article_type).lower()
-
-    # ---------------------------------------------
-    # Decide emoji based on product
-    # ---------------------------------------------
-
-    if "shoe" in article_type or "footwear" in category:
-
-        emoji = "👟"
-        title = "FASHION SHOES"
-
-    elif "bag" in article_type or "bag" in category:
-
-        emoji = "👜"
-        title = "FASHION BAG"
-
-    elif (
-        "dress" in article_type
-        or "dress" in category
-    ):
-
-        emoji = "👗"
-        title = "FASHION DRESS"
-
-    elif (
-        "shirt" in article_type
-        or "top" in article_type
-        or "tshirt" in article_type
-        or "t-shirt" in article_type
-    ):
-
-        emoji = "👕"
-        title = "FASHION TOP"
-
-    elif (
-        "watch" in article_type
-        or "accessories" in category
-    ):
-
-        emoji = "⌚"
-        title = "ACCESSORY"
-
-    elif (
-        "jacket" in article_type
-        or "coat" in article_type
-        or "blazer" in article_type
-    ):
-
-        emoji = "🧥"
-        title = "FASHION WEAR"
-
-    elif (
-        "jean" in article_type
-        or "trouser" in article_type
-        or "pant" in article_type
-    ):
-
-        emoji = "👖"
-        title = "FASHION BOTTOM"
-
-    else:
-
-        emoji = "👗"
-        title = "FASHION PRODUCT"
-
-    # ---------------------------------------------
-    # Create placeholder text
-    # ---------------------------------------------
-
-    text = (
-        f"{emoji}  {title}\\n"
-        f"Product #{product_id}"
-    )
-
-    # Encode text for URL
-    encoded_text = quote(text)
-
-    # ---------------------------------------------
-    # Placeholder image URL
-    # ---------------------------------------------
-
-    image_url = (
-        f"https://placehold.co/500x600"
-        f"/f5f3ff/4f46e5"
-        f"?text={encoded_text}"
-    )
-
-    return image_url
 
 
 # =========================================================
